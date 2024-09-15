@@ -29,7 +29,7 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
 
     public TokenDto login(LoginDto request) {
-        UserDetails user = userRepository.findByUsername(request.getUser()).orElse(null);
+        UserDetails user = userRepository.findByUsername(request.getUsername()).orElse(null);
         if (user != null) {
             if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
                 return new TokenDto(jwtService.getToken(user));
@@ -43,7 +43,7 @@ public class AuthService {
 
     public TokenDto register(UserDto request) {
         UserEntity user = new UserEntity();
-        RolEntity rol = rolRepository.findByName("CUSTOMER").orElse(null);
+        RolEntity rol = rolRepository.findByName("QA").orElse(null);
 
         user.setId(userRepository.findMaxId() + 1);
         user.setUsername(request.getUsername());
