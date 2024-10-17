@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin")
 @CrossOrigin(origins = "*")
-public class mainController {
+public class adminController {
 
     @Autowired
     UserRepository userRepository;
@@ -30,15 +30,14 @@ public class mainController {
     @Autowired
     JwtService jwtService;
 
-    @PreAuthorize("hasAuthority('CUSTOMER')")
-    @GetMapping("")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/all_users")
     public ResponseEntity<?> getUsers(HttpServletRequest request) {
         String jwtToken = request.getHeader("Authorization").substring(7); // Obtener el token del encabezado Authorization
         Claims claims = jwtService.getAllClaims(jwtToken);
         System.out.println("Claims del token:");
         for (Map.Entry<String, Object> entry : claims.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-            
+            System.out.println(entry.getKey() + ": " + entry.getValue()); 
         }
         List<UserEntity> listUsers = userRepository.findAll();
         return new ResponseEntity<>(listUsers, HttpStatus.OK);
