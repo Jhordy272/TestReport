@@ -1,4 +1,4 @@
-package com.test_report.security.controller;
+package com.test_report.controller;
 
 import com.test_report.dto.Message;
 import com.test_report.security.dto.UserDto;
