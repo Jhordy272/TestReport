@@ -45,7 +45,7 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> getById(@PathVariable("id") int id) {
         if (!userRepository.existsById(id)) {
-            return new ResponseEntity<>(new Message("El Usuario solicitado no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new Message("El Usuario solicitado no existe."), HttpStatus.NOT_FOUND);
         }
         UserEntity user = userRepository.findById(id).orElse(null);
         return new ResponseEntity<>(user, HttpStatus.OK);
@@ -55,6 +55,9 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> create(@RequestBody UserDto userDto) {
         UserEntity user = new UserEntity();
+        if(!userRepository.findByUsername(userDto.getUsername()).isEmpty()){
+            return new ResponseEntity<>(new Message("El Username ya existe."), HttpStatus.BAD_REQUEST);
+        }
         user.setUsername(userDto.getUsername());
         String hashedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setPassword(hashedPassword);
@@ -62,14 +65,14 @@ public class UserController {
         RolEntity rol = rolRepository.findById(userDto.getIdRol());
         user.setRol(rol);
         userRepository.save(user);
-        return new ResponseEntity<>(new Message("Usuario creado exitosamente"), HttpStatus.OK);
+        return new ResponseEntity<>(new Message("Usuario creado exitosamente."), HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody UserDto userDto) {
         if (!userRepository.existsById(id)) {
-            return new ResponseEntity<>(new Message("El Usuario solicitado no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new Message("El Usuario solicitado no existe."), HttpStatus.NOT_FOUND);
         }
         UserEntity user = userRepository.findById(id).orElse(null);
         user.setUsername(userDto.getUsername());
@@ -79,16 +82,16 @@ public class UserController {
         RolEntity rol = rolRepository.findById(userDto.getIdRol());
         user.setRol(rol);
         userRepository.save(user);
-        return new ResponseEntity<>(new Message("Usuario actualizado exitosamente"), HttpStatus.OK);
+        return new ResponseEntity<>(new Message("Usuario actualizado exitosamente."), HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         if (!userRepository.existsById(id)) {
-            return new ResponseEntity<>(new Message("El Usuario solicitado no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new Message("El Usuario solicitado no existe."), HttpStatus.NOT_FOUND);
         }
         userRepository.deleteById(id);
-        return new ResponseEntity<>(new Message("Usuario eliminado exitosamente"), HttpStatus.OK);
+        return new ResponseEntity<>(new Message("Usuario eliminado exitosamente."), HttpStatus.OK);
     }
 }
