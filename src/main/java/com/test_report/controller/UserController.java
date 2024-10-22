@@ -74,6 +74,9 @@ public class UserController {
         if (!userRepository.existsById(id)) {
             return new ResponseEntity<>(new Message("El Usuario solicitado no existe."), HttpStatus.NOT_FOUND);
         }
+        if(!userRepository.findByUsername(userDto.getUsername()).isEmpty()){
+            return new ResponseEntity<>(new Message("El Username ya existe."), HttpStatus.BAD_REQUEST);
+        }
         UserEntity user = userRepository.findById(id).orElse(null);
         user.setUsername(userDto.getUsername());
         String hashedPassword = passwordEncoder.encode(userDto.getPassword());
