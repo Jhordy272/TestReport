@@ -62,7 +62,7 @@ public class UserController {
         String hashedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setPassword(hashedPassword);
         user.setEmail(userDto.getEmail());
-        RolEntity rol = rolRepository.findById(userDto.getIdRol());
+        RolEntity rol = rolRepository.findById(userDto.getIdRol()).orElse(null);
         user.setRol(rol);
         userRepository.save(user);
         return new ResponseEntity<>(new Message("Usuario creado exitosamente."), HttpStatus.OK);
@@ -82,7 +82,7 @@ public class UserController {
         String hashedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setPassword(hashedPassword);
         user.setEmail(userDto.getEmail());
-        RolEntity rol = rolRepository.findById(userDto.getIdRol());
+        RolEntity rol = rolRepository.findById(userDto.getIdRol()).orElse(null);
         user.setRol(rol);
         userRepository.save(user);
         return new ResponseEntity<>(new Message("Usuario actualizado exitosamente."), HttpStatus.OK);
