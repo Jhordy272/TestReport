@@ -28,8 +28,8 @@ public class ProjectEntity {
     @Column(name = "ID")
     private Integer id;
     
-    @Column(name = "project_name")
-    private String projectName;
+    @Column(name = "name")
+    private String name;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "manager", referencedColumnName = "id")
