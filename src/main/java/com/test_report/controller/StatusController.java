@@ -2,7 +2,6 @@ package com.test_report.controller;
 
 import com.test_report.dto.Message;
 import com.test_report.dto.StatusDto;
-import com.test_report.entity.ReportEntity;
 import com.test_report.entity.StatusEntity;
 import com.test_report.repository.StatusRepository;
 import com.test_report.security.entity.UserEntity;
