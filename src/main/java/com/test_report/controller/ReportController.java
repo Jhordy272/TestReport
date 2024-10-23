@@ -107,8 +107,8 @@ public class ReportController {
         String jwtToken = request.getHeader("Authorization").substring(7); // Obtener el token del encabezado Authorization
         Claims claims = jwtService.getAllClaims(jwtToken);
         String subject = claims.getSubject();
-        UserEntity updatedBy = userRepository.findByUsername(subject).orElse(null);
-        report.setModifiedBy(updatedBy);
+        UserEntity modifiedBy = userRepository.findByUsername(subject).orElse(null);
+        report.setModifiedBy(modifiedBy);
         report.setLastUpdateDate(new Date());
         reportRepository.save(report);
         return new ResponseEntity<>(new Message("Reporte actualizado exitosamente."), HttpStatus.OK);
