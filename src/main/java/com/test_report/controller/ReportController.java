@@ -74,7 +74,7 @@ public class ReportController {
         report.setName(reportDto.getName());
         ProjectEntity project = projectRepository.findById(reportDto.getProject());
         report.setProject(project);
-        StatusEntity status = statusRepository.findById(reportDto.getProject());
+        StatusEntity status = statusRepository.findById(reportDto.getProject()).orElse(null);
         report.setStatus(status);
         report.setDetails(reportDto.getDetails());
         report.setExecutionDate(reportDto.getExecutionDate());
@@ -100,7 +100,7 @@ public class ReportController {
         report.setName(reportDto.getName());
         ProjectEntity project = projectRepository.findById(reportDto.getProject());
         report.setProject(project);
-        StatusEntity status = statusRepository.findById(reportDto.getProject());
+        StatusEntity status = statusRepository.findById(reportDto.getProject()).orElse(null);
         report.setStatus(status);
         report.setDetails(reportDto.getDetails());
         report.setExecutionDate(reportDto.getExecutionDate());
