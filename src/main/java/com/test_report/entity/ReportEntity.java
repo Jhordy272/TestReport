@@ -28,15 +28,15 @@ public class ReportEntity {
     @Column(name = "ID")
     private Integer id;
     
-    @Column(name = "report_name")
-    private String reportName;
+    @Column(name = "name")
+    private String name;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_project", referencedColumnName = "id")
-    private ProjectEntity idProject;
+    @JoinColumn(name = "project", referencedColumnName = "id")
+    private ProjectEntity project;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_status", referencedColumnName = "id")
+    @JoinColumn(name = "status", referencedColumnName = "id")
     private StatusEntity status;
     
     @Column(name = "details")

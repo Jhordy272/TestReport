@@ -28,8 +28,8 @@ public class StatusEntity {
     @Column(name = "ID")
     private Integer id;
     
-    @Column(name = "status_name")
-    private String statusName;
+    @Column(name = "name")
+    private String name;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "created_by", referencedColumnName = "id")
