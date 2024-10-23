@@ -17,9 +17,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -73,6 +75,37 @@ public class RolController {
         rol.setLastUpdateDate(new Date());
         rolRepository.save(rol);
         return new ResponseEntity<>(new Message("Rol creado exitosamente."), HttpStatus.OK);
+    }
+    
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody RolDto rolDto, HttpServletRequest request) {
+        if (!rolRepository.existsById(id)) {
+            return new ResponseEntity<>(new Message("El Rol solicitado no existe."), HttpStatus.NOT_FOUND);
+        }
+        if(!rolRepository.findByName(rolDto.getName()).isEmpty()){
+            return new ResponseEntity<>(new Message("El Rolname ya existe."), HttpStatus.BAD_REQUEST);
+        }
+        RolEntity rol = rolRepository.findById(id).orElse(null);
+        rol.setName(rolDto.getName());
+        String jwtToken = request.getHeader("Authorization").substring(7); // Obtener el token del encabezado Authorization
+        Claims claims = jwtService.getAllClaims(jwtToken);
+        String subject = claims.getSubject();
+        UserEntity modifiedBy = userRepository.findByUsername(subject).orElse(null);
+        rol.setModifiedBy(modifiedBy);
+        rol.setLastUpdateDate(new Date());
+        rolRepository.save(rol);
+        return new ResponseEntity<>(new Message("Rol actualizado exitosamente."), HttpStatus.OK);
+    }
+    
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<?> delete(@PathVariable("id") int id){
+        if (!rolRepository.existsById(id)) {
+            return new ResponseEntity<>(new Message("El Rol solicitado no existe."), HttpStatus.NOT_FOUND);
+        }
+        rolRepository.deleteById(id);
+        return new ResponseEntity<>(new Message("Rol eliminado exitosamente."), HttpStatus.OK);
     }
 
 }
