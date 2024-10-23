@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReportRepository extends JpaRepository<ReportEntity, Integer>{
     public Optional<ReportEntity> findById(int id);
-    public Optional<ReportEntity> findByReportName(String reportName);
+    public Optional<ReportEntity> findByName(String name);
 }

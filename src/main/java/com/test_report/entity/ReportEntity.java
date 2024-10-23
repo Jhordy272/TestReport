@@ -43,7 +43,7 @@ public class ReportEntity {
     private String details;
     
     @Column(name = "execution_date")
-    private Date execution_date;
+    private Date executionDate;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "created_by", referencedColumnName = "id")
