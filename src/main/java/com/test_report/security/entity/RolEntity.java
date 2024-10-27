@@ -29,18 +29,4 @@ public class RolEntity {
 
     @Column(name = "name")
     private String name;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "created_by", referencedColumnName = "id")
-    private UserEntity createdBy;
-    
-    @Column(name = "creation_date")
-    private Date creationDate;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "modified_by", referencedColumnName = "id")
-    private UserEntity modifiedBy;
-    
-    @Column(name = "last_update_date")
-    private Date lastUpdateDate;
 }

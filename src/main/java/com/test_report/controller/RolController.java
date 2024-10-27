@@ -11,7 +11,6 @@ import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,14 +64,6 @@ public class RolController {
             return new ResponseEntity<>(new Message("El Rolname ya existe."), HttpStatus.BAD_REQUEST);
         }
         rol.setName(rolDto.getName());
-        String jwtToken = request.getHeader("Authorization").substring(7); // Obtener el token del encabezado Authorization
-        Claims claims = jwtService.getAllClaims(jwtToken);
-        String subject = claims.getSubject();
-        UserEntity createdBy = userRepository.findByUsername(subject).orElse(null);
-        rol.setCreatedBy(createdBy);
-        rol.setCreationDate(new Date());
-        rol.setModifiedBy(createdBy);
-        rol.setLastUpdateDate(new Date());
         rolRepository.save(rol);
         return new ResponseEntity<>(new Message("Rol creado exitosamente."), HttpStatus.OK);
     }
@@ -88,12 +79,6 @@ public class RolController {
         }
         RolEntity rol = rolRepository.findById(id).orElse(null);
         rol.setName(rolDto.getName());
-        String jwtToken = request.getHeader("Authorization").substring(7); // Obtener el token del encabezado Authorization
-        Claims claims = jwtService.getAllClaims(jwtToken);
-        String subject = claims.getSubject();
-        UserEntity modifiedBy = userRepository.findByUsername(subject).orElse(null);
-        rol.setModifiedBy(modifiedBy);
-        rol.setLastUpdateDate(new Date());
         rolRepository.save(rol);
         return new ResponseEntity<>(new Message("Rol actualizado exitosamente."), HttpStatus.OK);
     }
