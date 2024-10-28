@@ -84,9 +84,36 @@ The API will be available at http://localhost:8080.
 - `POST /auth/register`: User registration with role QA and JWT token generation.
 
 ### Role Management
-- `GET /users`: Retrieves all users.
-- `GET /users/{id}`: Retrieves a user by ID.
-- `POST /users`: Creates a user.
-- `PUT /users/{id}`: Modifies a user by ID.
-- `DELETE /users/{id}`: Deletes a user by ID.
+- `GET /roles`: Retrieves all roles.
+- `GET /roles/{id}`: Retrieves a role by ID.
+- `POST /roles`: Creates a role.
+- `PUT /roles/{id}`: Modifies a role by ID.
+- `DELETE /roles/{id}`: Deletes a role by ID.
 
+### User Management
+- `GET /users`: Retrieves all roles.
+- `GET /users/{id}`: Retrieves a role by ID.
+- `POST /users`: Creates a role.
+- `PUT /users/{id}`: Modifies a role by ID.
+- `DELETE /users/{id}`: Deletes a role by ID.
+
+### Project Management
+- `GET /projects`: Retrieves all projects.
+- `GET /projects/{id}`: Retrieves a project by ID.
+- `POST /projects`: Creates a projects.
+- `PUT /projects/{id}`: Modifies a project by ID.
+- `DELETE /projects/{id}`: Deletes a project by ID.
+
+### Status Management
+- `GET /status`: Retrieves all status.
+- `GET /status/{id}`: Retrieves a status by ID.
+- `POST /status`: Creates a status.
+- `PUT /status/{id}`: Modifies a status by ID.
+- `DELETE /status/{id}`: Deletes a status by ID.
+
+### Test Report Management
+- `GET /reports`: Retrieves all reports.
+- `GET /reports/{id}`: Retrieves a report by ID.
+- `POST /reports`: Creates a report.
+- `PUT /reports/{id}`: Modifies a report by ID.
+- `DELETE /reports/{id}`: Deletes a report by ID.
