@@ -160,6 +160,21 @@ The API will be available at http://localhost:8080.
 }
 ```
 
+### Create a Role
+
+`POST /roles`
+
+**Headers:**
+- `Content-Type: application/json`
+- `Authorization: Bearer <JWT_TOKEN>`
+
+**Body:**
+```json
+{
+  "name": "role 1"
+}
+```
+
 ### Create a User
 
 `POST /users`
@@ -177,4 +192,23 @@ The API will be available at http://localhost:8080.
   "idRol": 1
 }
 ```
+
+### Create a Project
+
+`POST /projects`
+
+**Headers:**
+- `Content-Type: application/json`
+- `Authorization: Bearer <JWT_TOKEN>`
+
+**Body:**
+```json
+{
+  "name": "Project 1",
+  "manager": 1,
+  "description": "Description Project 1"
+}
+```
+
+
 
