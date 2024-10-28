@@ -5,6 +5,7 @@ This API enables the management of users, roles, projects, and test case reports
 ## Table of Contents
 
 - [Features](#features)
+- [API Documentation](#api-documentation)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -21,6 +22,11 @@ This API enables the management of users, roles, projects, and test case reports
 - Creation and reporting of test cases for each project.
 - Authentication and authorization using **JWT**.
 - JSON format responses.
+
+## API Documentation
+
+This project includes **Swagger** for API documentation, which allows you to view and test all available endpoints directly from your browser.
+
 
 ## Requirements
 
