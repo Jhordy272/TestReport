@@ -76,3 +76,17 @@ mvn spring-boot:run
 ```
 The API will be available at http://localhost:8080.
 
+
+## Endpoints
+
+### Authentication
+- `POST /auth/login`: User authentication and JWT token generation.
+- `POST /auth/register`: User registration with role QA and JWT token generation.
+
+### Role Management
+- `GET /users`: Retrieves all users.
+- `GET /users/{id}`: Retrieves a user by ID.
+- `POST /users`: Creates a user.
+- `PUT /users/{id}`: Modifies a user by ID.
+- `DELETE /users/{id}`: Deletes a user by ID.
+
