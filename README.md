@@ -245,4 +245,18 @@ The API will be available at http://localhost:8080.
 }
 ```
 
+## Contributing
 
+Contributions are welcome! If you'd like to improve the project, please follow these steps:
+
+1. **Fork** the repository.
+2. **Create a branch** for your feature or fix (`git checkout -b feature/YourFeature`).
+3. **Commit** your changes (`git commit -m 'Add new feature'`).
+4. **Push** to the branch (`git push origin feature/YourFeature`).
+5. Open a **Pull Request** and describe your changes.
+
+Please ensure your code follows the project's coding standards and includes relevant tests. We appreciate any enhancements, bug fixes, or documentation improvements!
+
+## License
+
+This project is licensed under the MIT License. You are free to use, modify, and distribute this software. See the [LICENSE](LICENSE) file for more details.
