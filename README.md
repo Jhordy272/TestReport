@@ -27,6 +27,24 @@ This API enables the management of users, roles, projects, and test case reports
 
 This project includes **Swagger** for API documentation, which allows you to view and test all available endpoints directly from your browser.
 
+### Accessing Swagger UI
+
+Once the application is running, you can access the Swagger UI at:
+
+- **URL**: `http://localhost:8080/swagger-ui.html`
+
+Through this interface, you can:
+- View all endpoints, along with their request and response formats.
+- Execute requests for each endpoint by providing necessary parameters and headers.
+- Test endpoint responses in real time.
+
+### Setup for Swagger (if needed)
+
+Swagger is already configured within the project. If you need to adjust any settings, you can do so in `application.properties`:
+
+```properties
+springdoc.swagger-ui.path=/swagger-ui.html
+```
 
 ## Requirements
 
