@@ -66,9 +66,13 @@ spring.datasource.password=password
 jwt.secret=secret_key
 
 # Server configuration
-server.port=8080 ```
+server.port=8080 
+```
 
 ## Usage
 To start the server, run:
-
+```bash 
+mvn spring-boot:run
+´´´
+The API will be available at http://localhost:8080.
 
