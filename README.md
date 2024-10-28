@@ -259,4 +259,4 @@ Please ensure your code follows the project's coding standards and includes rele
 
 ## License
 
-This project is licensed under the MIT License. You are free to use, modify, and distribute this software. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. You are free to use, modify, and distribute this software. See the [LICENSE](license) file for more details.
