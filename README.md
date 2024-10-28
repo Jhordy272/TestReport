@@ -226,4 +226,23 @@ The API will be available at http://localhost:8080.
 ```
 
 
+### Create a Status
+
+`POST /reports`
+
+**Headers:**
+- `Content-Type: application/json`
+- `Authorization: Bearer <JWT_TOKEN>`
+
+**Body:**
+```json
+{
+  "name": "Report 1",
+  "project": 1,
+  "status": 1,
+  "details": "Details Report 1",
+  "executionDate": "2024-10-28T02:55:21.657Z"
+}
+```
+
 
