@@ -210,5 +210,20 @@ The API will be available at http://localhost:8080.
 }
 ```
 
+### Create a Status
+
+`POST /status`
+
+**Headers:**
+- `Content-Type: application/json`
+- `Authorization: Bearer <JWT_TOKEN>`
+
+**Body:**
+```json
+{
+  "name": "Status 1"
+}
+```
+
 
 
