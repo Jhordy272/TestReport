@@ -117,3 +117,40 @@ The API will be available at http://localhost:8080.
 - `POST /reports`: Creates a report.
 - `PUT /reports/{id}`: Modifies a report by ID.
 - `DELETE /reports/{id}`: Deletes a report by ID.
+
+## Request Examples
+
+### Auth a User
+
+`POST /auth/login`
+
+**Headers:**
+- `Content-Type: application/json`
+- `Authorization: Bearer <JWT_TOKEN>`
+
+**Body:**
+```json
+{
+  "username": "user1",
+  "password": "123456"
+}
+```
+
+### Create a User
+
+`POST /users`
+
+**Headers:**
+- `Content-Type: application/json`
+- `Authorization: Bearer <JWT_TOKEN>`
+
+**Body:**
+```json
+{
+  "username": "user1",
+  "password": "123456",
+  "email": "user1@mail.com",
+  "idRol": 1
+}
+```
+
