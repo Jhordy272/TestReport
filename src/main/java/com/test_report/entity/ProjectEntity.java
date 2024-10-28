@@ -31,6 +31,9 @@ public class ProjectEntity {
     @Column(name = "name")
     private String name;
     
+    @Column(name = "description")
+    private String description;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "manager", referencedColumnName = "id")
     private UserEntity manager;
