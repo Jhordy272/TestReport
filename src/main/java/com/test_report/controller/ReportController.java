@@ -71,6 +71,9 @@ public class ReportController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> create(@RequestBody ReportDto reportDto, HttpServletRequest request) {
         ReportEntity report = new ReportEntity();
+        if(!reportRepository.findByName(reportDto.getName()).isEmpty()){
+            return new ResponseEntity<>(new Message("El ReportName ya existe."), HttpStatus.BAD_REQUEST);
+        }
         report.setName(reportDto.getName());
         ProjectEntity project = projectRepository.findById(reportDto.getProject()).orElse(null);
         report.setProject(project);
