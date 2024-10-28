@@ -72,7 +72,7 @@ public class ReportController {
     public ResponseEntity<?> create(@RequestBody ReportDto reportDto, HttpServletRequest request) {
         ReportEntity report = new ReportEntity();
         report.setName(reportDto.getName());
-        ProjectEntity project = projectRepository.findById(reportDto.getProject());
+        ProjectEntity project = projectRepository.findById(reportDto.getProject()).orElse(null);
         report.setProject(project);
         StatusEntity status = statusRepository.findById(reportDto.getProject()).orElse(null);
         report.setStatus(status);
@@ -98,7 +98,7 @@ public class ReportController {
         }
         ReportEntity report = reportRepository.findById(id).orElse(null);
         report.setName(reportDto.getName());
-        ProjectEntity project = projectRepository.findById(reportDto.getProject());
+        ProjectEntity project = projectRepository.findById(reportDto.getProject()).orElse(null);
         report.setProject(project);
         StatusEntity status = statusRepository.findById(reportDto.getProject()).orElse(null);
         report.setStatus(status);
