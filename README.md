@@ -226,7 +226,7 @@ The API will be available at http://localhost:8080.
 ```
 
 
-### Create a Status
+### Create a Test Report
 
 `POST /reports`
 
