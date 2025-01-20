@@ -1,6 +1,6 @@
 # Test Case Reporting API
 
-This API enables the management of users, roles, projects, and test case reports. Developed in **Spring Boot**, it follows RESTful principles for easy integration with other systems.
+An API specifically designed for managing software test case reports, with features for handling users, roles, projects, and test case data. Developed in Spring Boot, it adheres to RESTful principles for seamless integration with other systems and efficient management of testing workflows. The API ensures secure access and operations through JWT-based authentication.
 
 ## Table of Contents
 
